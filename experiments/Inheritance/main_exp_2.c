@@ -20,6 +20,7 @@
 //    overflow on this subject: https://stackoverflow.com/questions/1237266/how-can-inheritance-be-modelled-using-c
 //    Undertand if this method works for more than one derivation.
 //    Check if this method is guaranted to work from C standard.
+//  - watch this resource to learn more about that: 
 //------------------------------------------------------------------------------------------------------------------
 //==================================================================================================================
 
