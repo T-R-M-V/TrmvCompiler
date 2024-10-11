@@ -35,12 +35,13 @@
 // Class that must be inherited (START)
 struct A {
     int a;
-
-    void (*f_ptr)(struct A*);    // This is the equivalent to a virtual function in C++ with this signature: virtual void f();
 };
 // Class that must be inherited (END)
 
 // Class that must inherit from A(parent class) (START)
+// We can put a field of type A at the start of the struct of type B.
+// Then we can directly access to the field of struct A contained in an
+// istance of type struct B casting a reference of this istance to A*.
 struct B {
     struct A super;
 
@@ -48,35 +49,26 @@ struct B {
 };
 // Class that must inherit from A(parent class) (END)
 
+// We can directly move all the methods that are not overridable out of the struct
+// like simple function where we pass a parameter that is implicit in the source code,
+// the reference to the object on witch we execute the function.
+// With the tric that we described above, we can easily use the function_1 even on reference
+// of type B. 
+void function_1(struct A* this);
 
+void function_1(struct A* this) {
+    
+    
 
-// Function to bind like methods for the classes (START)
-void f_a(struct A* a);
-void f_b(struct B* b);
-
-void f_a(struct A* a) {
-    a->a = 10;
-    printf("Called implementation for A\n");
 }
-
-void f_b(struct B* b) {
-    b->b = 10;
-    printf("Called implementation for B\n");
-}
-// Function to bind like methods for the classes (END)
 
 
 
 
 
 int main() {
-    struct A a;
     struct B b;
     b.super.a = 10;
-
-    // Binding function, you can make this in the constructor we want to create
-    //b.super.f_ptr = &f_b;
-    
     struct A* generic_ref = (struct A*)&b;
 
     printf("%d", generic_ref->a);
