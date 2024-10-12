@@ -34,7 +34,8 @@
 
 // Class that must be inherited (START)
 struct A {
-    int a;
+    int field_1;
+    char* string;
 };
 // Class that must be inherited (END)
 
@@ -45,7 +46,7 @@ struct A {
 struct B {
     struct A super;
 
-    int b;
+    int field_2;
 };
 // Class that must inherit from A(parent class) (END)
 
@@ -57,9 +58,7 @@ struct B {
 void function_1(struct A* this);
 
 void function_1(struct A* this) {
-    
-    
-
+    this->field_1 = 15;
 }
 
 
@@ -68,10 +67,10 @@ void function_1(struct A* this) {
 
 int main() {
     struct B b;
-    b.super.a = 10;
+    b.super.field_1 = 10;
     struct A* generic_ref = (struct A*)&b;
 
-    printf("%d", generic_ref->a);
+    printf("%d", generic_ref->field_1);
 
     return 0;
 }

@@ -24,6 +24,7 @@ class A {
 
     void function_1() {
         // Do something with this
+        this.field_1 = 15;
     }
 }
 
@@ -41,4 +42,6 @@ main() {
     A b = build B;
 
     b.function_1();
+
+    print(b.field_1);
 }
